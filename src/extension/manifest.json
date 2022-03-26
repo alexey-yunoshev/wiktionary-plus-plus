@@ -9,5 +9,13 @@
       "css": ["styles.css"],
       "js": ["main.ts"],
       "matches": ["https://pl.wiktionary.org/wiki/*"]
-    }]
+    }],
+    "background": {
+      "scripts": ["background/eventListener.ts"],
+      "persistent": false
+    },
+    "permissions": ["notifications"],
+    "icons": {
+      "128": "images/logo.png"
+    }
 }

@@ -19,8 +19,16 @@
   ],
   "background": {
     "scripts": [
+      "/background/eventListener.js",
       "/autoreload-bg.3b2881c8.js"
-    ]
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "notifications"
+  ],
+  "icons": {
+    "128": "/images/logo.png"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval' blob: filesystem:;object-src 'self' blob: filesystem:;"
 }
