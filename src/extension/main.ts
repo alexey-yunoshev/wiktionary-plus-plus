@@ -10,6 +10,6 @@ window.onload = () => {
       hideRedLinks: true,
       showLemmaLevel: true,
     });
-    formatTranslationSection(targetTranslations);
+    formatTranslationSection(targetTranslations, "Polish  ");
   }, 500);
 };

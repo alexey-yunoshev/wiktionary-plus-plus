@@ -63,7 +63,6 @@ FormatSameRootLemmasOptions = {}) {
         const lemmaLevel = getLemmaLevel(polishLemmasLevelMap, lemma);
 
         if (lemmaLevel !== undefined) {
-            console.log(child.href);
           if (urlsByLevel.has(lemmaLevel)) {
             urlsByLevel.get(lemmaLevel)?.push(child.href);
           } else {

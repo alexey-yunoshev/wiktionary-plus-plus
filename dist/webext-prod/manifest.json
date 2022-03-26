@@ -15,5 +15,17 @@
         "https://pl.wiktionary.org/wiki/*"
       ]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "/background/eventListener.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "notifications"
+  ],
+  "icons": {
+    "128": "/images/logo.png"
+  }
 }
