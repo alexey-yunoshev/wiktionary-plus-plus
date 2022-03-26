@@ -1,0 +1,43 @@
+{
+  "name": "wiktionary_plus",
+  "version": "0.0.1",
+  "description": "A set of Wiktionary extensions",
+  "scripts": {
+    "build": "parcel build src/extension/manifest.json --target webext-prod",
+    "dev": "parcel src/extension/manifest.json --host localhost --target webext-dev",
+    "lint": "eslint . --ext .ts --fix",
+    "prepare": "husky install"
+  },
+  "targets": {
+    "webext-dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    },
+    "webext-prod": {}
+  },
+  "source": "src/extension/main.ts",
+  "main": "dist/main.js",
+  "author": "Alexey Yunoshev",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "17.0.23",
+    "@typescript-eslint/eslint-plugin": "5.16.0",
+    "@typescript-eslint/parser": "5.16.0",
+    "csv-parse": "^5.0.4",
+    "eslint": "8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "parcel": "^2.4.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@parcel/config-webextension": "^2.4.0",
+    "ts-node": "^10.7.0"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache"
+  }
+}

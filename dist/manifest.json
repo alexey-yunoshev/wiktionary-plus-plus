@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Wiktionary++",
+  "version": "0.1.1",
+  "description": "Wiktionary extension",
+  "content_scripts": [
+    {
+      "css": [
+        "/styles.css"
+      ],
+      "js": [
+        "/main.js",
+        "/autoreload.8b981e35.js"
+      ],
+      "matches": [
+        "https://pl.wiktionary.org/wiki/*"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "/autoreload-bg.3b2881c8.js"
+    ]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' blob: filesystem:;object-src 'self' blob: filesystem:;"
+}
