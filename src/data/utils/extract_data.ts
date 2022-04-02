@@ -6,23 +6,23 @@ const outputPath = resolve(__dirname, "..", "languages", "polish", "polish_frequ
 
 type Item = Record<string, string>;
 const input: Array<Item> = readFileSync(inputPath, "utf-8")
-    .split("\n")
-    .filter((line) => line.trim() !== "")
-    .map((line) => JSON.parse(line.trim()));
+  .split("\n")
+  .filter((line) => line.trim() !== "")
+  .map((line) => JSON.parse(line.trim()));
 
 const columns: Item = {
-    "band": "level",
-    "base lemma": "lemma",
+  "band": "level",
+  "base lemma": "lemma",
 };
 
 const parsedContent = input.map((record) => {
-    const output: Item = {};
+  const output: Item = {};
     
-    for (const key of Object.keys(columns)) {
-        output[columns[key]] = record[key];
-    }
+  for (const key of Object.keys(columns)) {
+    output[columns[key]] = record[key];
+  }
 
-    return output;
+  return output;
 });
 
 writeFileSync(outputPath, JSON.stringify(parsedContent));

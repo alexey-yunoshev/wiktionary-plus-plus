@@ -1,9 +1,10 @@
 import { BasicAddNoteParams } from "./anki/addNote";
 import { AddNoteMessage, MessageType, Messsage } from "./messages";
+import { logger } from "./logger";
 
 function makeCopyButton(
   text: string,
-  classes: string[] = []
+  classes: string[] = [],
 ): HTMLButtonElement {
   const copyButton = document.createElement("button");
   copyButton.innerHTML = "📄";
@@ -18,7 +19,7 @@ function makeCopyButton(
 
 function makeAnkiButton(
   params: BasicAddNoteParams,
-  classes: string[] = []
+  classes: string[] = [],
 ): HTMLButtonElement {
   const copyButton = document.createElement("button");
   copyButton.innerHTML = "Anki";
@@ -36,11 +37,15 @@ function makeAnkiButton(
 
 export function formatTranslationSection(
   targetTranslations: string[],
-  ankiDeckName = ""
+  ankiDeckName = "",
 ): void {
-  const translationColumns = document.getElementsByClassName(
-    "translations-columns"
+  let translationColumns: Element | undefined | null = document.getElementsByClassName(
+    "translations-columns",
   )[0];
+
+  if (translationColumns === undefined) {
+    translationColumns = document.querySelector("ul.fldt-tlumaczenia");
+  }
 
   if (translationColumns === undefined) {
     return;
@@ -55,7 +60,7 @@ export function formatTranslationSection(
       }
 
       return false;
-    }
+    },
   ) as Array<HTMLLIElement>;
 
   const heading = document.getElementById("firstHeading");
@@ -65,7 +70,7 @@ export function formatTranslationSection(
   const lemma = heading.innerText;
   const pronunciation = (
     document.querySelectorAll(
-      "span[title^=\"To jest wymowa w zapisie IPA; zobacz hasło IPA w Wikipedii\"].lang-pl"
+      "span[title^=\"To jest wymowa w zapisie IPA; zobacz hasło IPA w Wikipedii\"].lang-pl",
     )[0] as HTMLSpanElement | undefined
   )?.innerText;
 
@@ -90,17 +95,19 @@ export function formatTranslationSection(
 
   translationColumns.replaceChildren(...newTranslations);
 
-  chrome.runtime.onMessage.addListener(async function (message: Messsage) {
+  chrome.runtime.onMessage.addListener(async (message: Messsage) => {
     switch (message.type) {
       case MessageType.addNoteResponse: {
         if (message.payload.error !== null) {
-          console.error(message.payload.error);
+          logger.error(message.payload.error);
         } else {
-          console.log("Note added");
+          logger.info("Note added");
         }
 
         break;
       }
+      default:
+        logger.error(message, `Unexpected message type: ${message.type}`);
     }
   });
 }
