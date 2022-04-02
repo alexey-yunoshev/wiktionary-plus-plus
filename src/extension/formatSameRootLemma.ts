@@ -76,25 +76,25 @@ FormatSameRootLemmasOptions = {}) {
   }
 
   if (urlsByLevel.size > 0) {
-      const buttons: Array<HTMLButtonElement> = [];
+    const buttons: Array<HTMLButtonElement> = [];
 
-      for (const [level, urls] of urlsByLevel.entries()) {
-        const openUrlsButton: HTMLButtonElement = document.createElement("button");
-        openUrlsButton.innerText = `Open all ${level} level lemmas`;
+    for (const [level, urls] of urlsByLevel.entries()) {
+      const openUrlsButton: HTMLButtonElement = document.createElement("button");
+      openUrlsButton.innerText = `Open all ${level} level lemmas`;
     
-        openUrlsButton.addEventListener("click", () => {
-          for (const url of urls) {
-            window.open(url, "_blank");
-          }
-        });
+      openUrlsButton.addEventListener("click", () => {
+        for (const url of urls) {
+          window.open(url, "_blank");
+        }
+      });
 
-        buttons.push(openUrlsButton);
-      }
+      buttons.push(openUrlsButton);
+    }
 
-      const buttonsContainer = document.createElement("div");
-      buttons.sort((a, b) => a.innerText.localeCompare(b.innerText));
-      buttonsContainer.replaceChildren(...buttons);
-      buttonsContainer.classList.add("root_links_container", "ml-25");
-      titleElement.insertAdjacentElement("afterend", buttonsContainer);
+    const buttonsContainer = document.createElement("div");
+    buttons.sort((a, b) => a.innerText.localeCompare(b.innerText));
+    buttonsContainer.replaceChildren(...buttons);
+    buttonsContainer.classList.add("root_links_container", "ml-25");
+    titleElement.insertAdjacentElement("afterend", buttonsContainer);
   }
 }

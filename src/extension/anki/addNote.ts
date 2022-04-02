@@ -26,15 +26,15 @@ export interface AddNoteParams {
 }
 
 export interface BasicAddNoteParams {
-    deckName: AddNoteParams["note"]["deckName"],
-    front: AddNoteParams["note"]["fields"]["Front"],
-    back: AddNoteParams["note"]["fields"]["Back"]
+  deckName: AddNoteParams["note"]["deckName"],
+  front: AddNoteParams["note"]["fields"]["Front"],
+  back: AddNoteParams["note"]["fields"]["Back"]
 }
 
 export function getDefaultAddNoteParams({
-front,
-back,
-deckName
+  front,
+  back,
+  deckName,
 }: BasicAddNoteParams): AddNoteParams {
   return {
     note: {
@@ -60,7 +60,7 @@ deckName
 
 export function addNote(params: BasicAddNoteParams) {
   return invokeAction({
-      action: ActionType.AddNote,
-      params: getDefaultAddNoteParams(params),
+    action: ActionType.AddNote,
+    params: getDefaultAddNoteParams(params),
   });
 }

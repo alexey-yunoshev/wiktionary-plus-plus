@@ -1,4 +1,4 @@
 export interface Lemma {
-    level: string;
-    lemma: string;
+  level: string;
+  lemma: string;
 }

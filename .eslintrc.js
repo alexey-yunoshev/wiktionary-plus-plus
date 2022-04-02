@@ -6,14 +6,36 @@ module.exports = {
       "@typescript-eslint",
     ],
     extends: [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
+      "airbnb-base",
       "prettier",
     ],
     "rules": {
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/no-unused-vars": "error",
-        quotes: ["error", "double"],
-        semi: "error",
+      "import/prefer-default-export": "off",
+      "no-console": "error",
+      "no-restricted-syntax": ["error", "WithStatement"],
+      semi: "error",
+    },
+    overrides: [
+      {
+        files: ["*/**/*.ts"],
+        extends: [
+          "airbnb-typescript/base",
+          "plugin:@typescript-eslint/recommended",
+        ],
+  
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "error",
+          "@typescript-eslint/no-unused-vars": "error",
+          "@typescript-eslint/quotes": ["error", "double"],
+        },
+
+        parserOptions: {
+          project: ["./tsconfig.json"],
+        },
+      },
+    ],
+    env: {
+      "browser": true,
+      "es6": true,
     }
   };

@@ -8462,4 +8462,4 @@ export const polishLemmas: Array<Lemma> = [
   { level: "A2", lemma: "żywy" },
 ];
 
-export const polishLemmasLevelMap = new Map<string, string>(polishLemmas.map(({level, lemma}) => [lemma, level]));
+export const polishLemmasLevelMap = new Map<string, string>(polishLemmas.map(({ level, lemma }) => [lemma, level]));
