@@ -14,8 +14,7 @@ function isLemmaLink(element: Element): element is HTMLAnchorElement {
 
 export function formatSameRootLemmas({
   hideRedLinks = false,
-}: // showLemmaLevel = false,
-FormatSameRootLemmasOptions = {}) {
+}: FormatSameRootLemmasOptions = {}) {
   const titleElement = document.querySelector("dt.fldt-pokrewne");
   if (titleElement === null) {
     return;

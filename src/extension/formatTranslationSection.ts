@@ -39,9 +39,13 @@ export function formatTranslationSection(
   targetTranslations: string[],
   ankiDeckName = "",
 ): void {
-  const translationColumns = document.getElementsByClassName(
+  let translationColumns: Element | undefined | null = document.getElementsByClassName(
     "translations-columns",
   )[0];
+
+  if (translationColumns === undefined) {
+    translationColumns = document.querySelector("ul.fldt-tlumaczenia");
+  }
 
   if (translationColumns === undefined) {
     return;
